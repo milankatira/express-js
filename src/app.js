@@ -1,18 +1,20 @@
+//~import
 const express=require('express');
 const path=require('path');
 const hbs=require('hbs');
 const app=express();
 const port="8000"
 
-//pass 2 parameters 1.routes,2.callback
-//app.get(routes,callback)
+//?pass 2 parameters 1.routes,2.callback
 
-// //html passing 
-// app.get("/",(req,res)=>{
-// res.send("<h1>hello from express</h1>")
-// });
+app.get(routes,callback)
 
-//json parsing
+//~html passing 
+app.get("/",(req,res)=>{
+res.send("<h1>hello from express</h1>")
+});
+
+//!json parsing
 //instans of send we can also used json output will be same 
 app.get('/json',(req,res)=>{
     res.send([
@@ -29,17 +31,18 @@ app.get('/json',(req,res)=>{
 });
 
 
-//html file routing using built in middleware
+//?html file routing using built in middleware
+
 const staticPath=path.join(__dirname,"../public")
 
-//app.use(express.static(staticPath));
+//!app.use(express.static(staticPath));
 const templatePath=path.join(__dirname,"../templates/views")
 const partialsPath=path.join(__dirname,"../templates/partials")
 
-//set the view template engine
+//!set the view template engine
 app.set("view engine","hbs");
 
-//change the views dir name
+//!change the views dir name
 app.set("views",templatePath);
 
 hbs.registerPartials(partialsPath);
